@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <title>مضيف GoldHEN لإصدارات PS4 من 5.05 إلى 14.02 هوبي</title>
 <link rel="stylesheet" href="../style.css">
-<style id="black-crown-theme">html,body{margin:0!important;min-height:100%!important;background:#060304 url('../black-crown-fast.jpg') center center / cover no-repeat fixed!important;color:#fff!important;font-family:Arial,Tahoma,sans-serif!important;text-align:center!important;overflow:hidden!important}body>h1:not(#msgs),body>hr,body>br,body>a,body>p{display:none!important}#msgs{position:fixed!important;top:auto!important;bottom:10%!important;left:19%!important;width:62%!important;margin:0!important;min-height:36px!important;padding:15px 12px!important;box-sizing:border-box!important;background:rgba(5,2,5,.88)!important;border:1px solid #a51324!important;border-radius:10px!important;box-shadow:0 0 20px #6a0918!important;color:#fff!important;font-size:22px!important;line-height:1.5!important;z-index:10!important}#bc-version{position:fixed;top:49%;left:32%;width:36%;text-align:center;font:bold 20px Arial;color:#fff;text-shadow:0 0 9px #f00;z-index:9}#bc-track{position:fixed;bottom:6%;left:22%;width:56%;height:10px;border-radius:20px;background:#26060b;border:1px solid #f22;box-shadow:0 0 10px #f22;overflow:hidden;z-index:11}#bc-fill{height:100%;width:8%;background:linear-gradient(90deg,#910017,#ff2038,#ffadb7);transition:width .2s} @media(max-width:700px){#msgs{left:5%!important;width:90%!important;bottom:12%!important;font-size:15px!important}#bc-track{left:8%;width:84%;bottom:7%}#bc-version{left:10%;width:80%;top:52%;font-size:16px}}#bc-version{position:fixed!important;top:0!important;left:0!important;width:auto!important;min-width:130px!important;transform:translate(-50%,-50%)!important;z-index:20!important;direction:ltr!important;text-align:center!important;font:bold 38px Arial,Tahoma,sans-serif!important;font-style:italic!important;color:#fff!important;text-shadow:0 0 4px #fff,0 0 12px #f00,0 0 23px #d00!important;white-space:nowrap!important;pointer-events:none!important}</style><style id="bc-real-progress-style">
-#bc-track{position:fixed!important;left:0!important;top:0!important;bottom:auto!important;width:900px!important;height:68px!important;box-sizing:border-box!important;border:3px solid #e82a38!important;border-radius:35px!important;background:linear-gradient(180deg,#090508,#21060d 48%,#090408)!important;box-shadow:0 0 0 12px rgba(5,2,4,.97),0 0 24px #c20a25,inset 0 0 22px #090205!important;overflow:hidden!important;z-index:15!important;transform:translate(-50%,-50%)!important}
-#bc-fill{height:100%!important;width:0%;background:repeating-linear-gradient(115deg,#ff263f 0px,#ff263f 23px,#a00017 24px,#a00017 32px)!important;box-shadow:inset 0 0 15px #ffb5b5,0 0 18px #f20!important;transition:width .18s linear!important}
-#bc-percent{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);font:bold 18px Arial;color:white;text-shadow:0 0 8px #ff0022;z-index:16;pointer-events:none;direction:ltr}
-</style><style id="bc-cache-only-style">
-/* Hide text baked into the background; replace it with live cache UI only during installation. */
-#bc-baked-caption-mask,#bc-baked-bar-mask{position:fixed;z-index:12;pointer-events:none;background:linear-gradient(180deg,#090307 0%,#17050b 50%,#090307 100%);border:1px solid rgba(216,20,40,.45);box-shadow:inset 0 0 18px #080205,0 0 12px rgba(150,0,22,.35)}
-#bc-baked-caption-mask{border-radius:7px}#bc-baked-bar-mask{border-radius:28px}
-#bc-cache-ui{position:fixed;z-index:16;display:none;text-align:center;direction:rtl;pointer-events:none;color:#fff;font-family:Arial,Tahoma,sans-serif}
-#bc-cache-label{font-size:clamp(13px,2vw,25px);font-weight:bold;text-shadow:0 0 12px #ff243e;white-space:nowrap}
-#bc-track{display:none!important;z-index:17!important}
-#bc-percent{display:none!important;z-index:18!important}
-body.bc-caching #bc-cache-ui,body.bc-caching #bc-track,body.bc-caching #bc-percent{display:block!important}
-body.bc-caching #msgs{display:none!important}
+<style id="black-crown-theme">
+html,body{margin:0!important;width:100%;height:100%;background:#080306 url('../black-crown-fast.jpg') center center / cover no-repeat fixed!important;color:white;font-family:Arial,Tahoma,sans-serif;text-align:center;overflow:hidden}
+body>hr,body>br,body>p,body>a,body>h1:not(#msgs){display:none!important}
+#msgs{position:fixed!important;z-index:30;left:18%;bottom:8%;width:64%;padding:10px 14px;box-sizing:border-box;margin:0!important;background:rgba(8,2,5,.8);border:1px solid #ab1d31;border-radius:10px;font-size:clamp(14px,2vw,24px)!important;line-height:1.5;display:none}
+#bc-version{position:fixed;z-index:20;left:50%;top:55%;transform:translate(-50%,-50%);font:bold italic clamp(19px,3vw,38px) Arial,Tahoma,sans-serif;color:#fff;text-shadow:0 0 5px #fff,0 0 14px #e00020;direction:ltr;pointer-events:none;white-space:nowrap}
+#bc-cache-ui{display:none;position:fixed;z-index:21;left:50%;top:64%;transform:translateX(-50%);width:72%;max-width:950px;direction:rtl;pointer-events:none;text-align:center}
+#bc-cache-label{font-size:clamp(15px,2.1vw,25px);font-weight:bold;text-shadow:0 0 12px #ff243e}
+#bc-track{display:none;position:relative;margin:14px auto 0;width:100%;height:24px;border:2px solid #e32942;border-radius:18px;box-sizing:border-box;overflow:hidden;background:rgba(18,3,8,.9);box-shadow:0 0 15px #b10022}
+#bc-fill{height:100%;width:0;background:repeating-linear-gradient(115deg,#ff263f 0,#ff263f 22px,#a00017 23px,#a00017 32px);transition:width .12s linear}
+#bc-percent{display:block;margin-top:9px;font:bold 22px Arial,sans-serif;direction:ltr;text-shadow:0 0 12px #ff0022}
+body.bc-caching #bc-cache-ui,body.bc-caching #bc-track{display:block}
+body.bc-error #msgs,body.bc-status #msgs{display:block}
+@media(max-width:700px){#bc-version{top:55%;font-size:22px}#bc-cache-ui{top:63%;width:85%}}
 </style></head>
 <body>
 <script>
@@ -43,39 +42,21 @@ if(cache.status==cache.UPDATEREADY)ActivateCacheUpdate();
 <!-- Cloudflare Web Analytics -->
 
 <!-- End Cloudflare Web Analytics -->
-<div id="bc-version"></div><div id="bc-track"><div id="bc-fill"></div></div><script id="bc-firmware-dynamic">(function(){
-var el=document.getElementById('bc-version');if(!el)return;
-var ua=navigator.userAgent||'';var m=ua.match(/PlayStation 4[ \/]([0-9]+(?:\.[0-9]+)?)/i);
-el.textContent=m?m[1]:'--.--';
-function place(){var w=window.innerWidth,h=window.innerHeight,s=Math.max(w/1672,h/941),ox=(w-1672*s)/2,oy=(h-941*s)/2;el.style.left=(ox+845*s)+'px';el.style.top=(oy+519*s)+'px';el.style.fontSize=Math.max(16,Math.min(45,38*s))+'px';}
-place();window.addEventListener('resize',place);
-})();</script><script id="bc-cache-only-script">(function(){
+<div id="bc-version"></div>
+<div id="bc-cache-ui"><div id="bc-cache-label">جارٍ تحميل الكاش الخاص بالإصدار...</div><div id="bc-track"><div id="bc-fill"></div></div><div id="bc-percent">0%</div></div>
+<script id="bc-dynamic-ui">(function(){
+var ver=document.getElementById('bc-version'),ui=document.getElementById('bc-cache-ui'),fill=document.getElementById('bc-fill'),percent=document.getElementById('bc-percent'),msgs=document.getElementById('msgs');
+var m=(navigator.userAgent||'').match(/PlayStation 4[ \/]([0-9]+(?:\.[0-9]+)?)/i);
+ver.textContent=m?m[1]:'--.--';
+function place(){var w=innerWidth,h=innerHeight,s=Math.max(w/1672,h/941),ox=(w-1672*s)/2,oy=(h-941*s)/2;ver.style.left=(ox+836*s)+'px';ver.style.top=(oy+525*s)+'px';ver.style.fontSize=Math.max(16,Math.min(43,37*s))+'px';}
+place();window.addEventListener('resize',place,false);
 var cachePage=/\/cache(?:505|700|900|css|slopkit)\.html$/i.test(location.pathname);
-var track=document.getElementById('bc-track'),fill=document.getElementById('bc-fill'),percent=document.getElementById('bc-percent');
-var caption=document.createElement('div');caption.id='bc-baked-caption-mask';document.body.appendChild(caption);
-var bar=document.createElement('div');bar.id='bc-baked-bar-mask';document.body.appendChild(bar);
-var ui=document.createElement('div');ui.id='bc-cache-ui';ui.innerHTML='<div id="bc-cache-label">جارٍ تحميل الكاش الخاص بالإصدار...</div>';document.body.appendChild(ui);
-var done=false,ac=window.applicationCache;
-function place(){
- var w=innerWidth,h=innerHeight,s=Math.max(w/1672,h/941),ox=(w-1672*s)/2,oy=(h-941*s)/2;
- function pos(el,x,y,ww,hh){el.style.left=(ox+x*s)+'px';el.style.top=(oy+y*s)+'px';el.style.width=(ww*s)+'px';el.style.height=(hh*s)+'px';}
- pos(caption,548,554,590,67);pos(bar,305,627,1058,110);pos(ui,548,561,590,54);
- if(track){pos(track,320,650,1020,64);track.style.transform='none';}
- if(percent){pos(percent,755,668,160,34);percent.style.transform='none';percent.style.lineHeight=(34*s)+'px';percent.style.fontSize=Math.max(14,24*s)+'px';}
-}
-function show(n){if(!cachePage||done)return;document.body.classList.add('bc-caching');var p=Math.max(0,Math.min(100,Math.round(n)));if(fill)fill.style.width=p+'%';if(percent)percent.textContent=p+'%';}
-function finish(){if(!cachePage||done)return;show(100);done=true;setTimeout(function(){document.body.classList.remove('bc-caching');},850);}
-function fail(){document.body.classList.remove('bc-caching');var m=document.getElementById('msgs');if(m)m.style.display='block';}
-place();addEventListener('resize',place);
-if(!cachePage)return;
-show(0);
-if(ac){
- ac.addEventListener('progress',function(e){if(e&&e.total>0)show(e.loaded/e.total*100);},false);
- ac.addEventListener('cached',finish,false);
- ac.addEventListener('updateready',finish,false);
- ac.addEventListener('noupdate',function(){document.body.classList.remove('bc-caching');},false);
- ac.addEventListener('error',fail,false);
- if(ac.status===ac.IDLE){document.body.classList.remove('bc-caching');}
-}
+if(!cachePage){if(msgs){var old=msgs.innerHTML;var obs=new MutationObserver(function(){if(/غير مدعوم|تعذّر|لم يتم العثور|فشل|خطأ/.test(msgs.textContent))document.body.classList.add('bc-error');});obs.observe(msgs,{childList:true,subtree:true,characterData:true});}return;}
+var ac=window.applicationCache,done=false;
+function progress(n){if(done)return;document.body.classList.add('bc-caching');var p=Math.max(0,Math.min(100,Math.round(n)));fill.style.width=p+'%';percent.textContent=p+'%';}
+function finish(){if(done)return;progress(100);done=true;setTimeout(function(){document.body.classList.remove('bc-caching');},650);}
+function error(){document.body.classList.remove('bc-caching');document.body.classList.add('bc-error');}
+progress(0);
+if(ac){ac.addEventListener('progress',function(e){if(e.total>0)progress(e.loaded/e.total*100);},false);ac.addEventListener('cached',finish,false);ac.addEventListener('updateready',finish,false);ac.addEventListener('noupdate',function(){done=true;document.body.classList.remove('bc-caching');},false);ac.addEventListener('error',error,false);if(ac.status===ac.IDLE||ac.status===ac.UNCACHED&&navigator.onLine===false){document.body.classList.remove('bc-caching');}}
 })();</script></body>
 </html>
