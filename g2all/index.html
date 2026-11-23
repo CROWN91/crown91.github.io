@@ -17,6 +17,16 @@ body>hr,body>br,body>p,body>a,body>h1:not(#msgs){display:none!important}
 body.bc-caching #bc-cache-ui,body.bc-caching #bc-track{display:block}
 body.bc-error #msgs,body.bc-status #msgs{display:block}
 @media(max-width:700px){#bc-version{top:55%;font-size:22px}#bc-cache-ui{top:63%;width:85%}}
+
+/* GoldHEN activity: indeterminate by design; no fake percentage */
+#bc-exploit-ui{display:none;position:fixed;z-index:26;left:50%;top:65%;transform:translateX(-50%);width:64%;max-width:900px;pointer-events:none;text-align:center;direction:rtl;color:white;font-family:Arial,Tahoma,sans-serif}
+#bc-exploit-ui .bc-exploit-title{font-weight:bold;font-size:clamp(16px,2vw,25px);text-shadow:0 0 13px #f13;margin-bottom:12px}
+#bc-exploit-track{height:20px;border:2px solid #d82942;border-radius:15px;background:rgba(12,2,5,.87);box-shadow:0 0 18px #8b001b;overflow:hidden;position:relative}
+#bc-exploit-runner{height:100%;width:35%;background:linear-gradient(90deg,transparent,#a90023,#ff304c,#ffbec7,#c50027,transparent);box-shadow:0 0 20px #f13;animation:bc-exploit-sweep 1.7s ease-in-out infinite alternate}
+@keyframes bc-exploit-sweep{from{transform:translateX(-105%)}to{transform:translateX(300%)}}
+body.bc-exploiting #bc-exploit-ui{display:block}
+body.bc-exploiting #msgs{display:none!important}
+@media(prefers-reduced-motion:reduce){#bc-exploit-runner{animation-duration:3s}}
 </style></head>
 <body>
 <script>
@@ -155,5 +165,20 @@ function finish(){if(done)return;progress(100);done=true;setTimeout(function(){d
 function error(){document.body.classList.remove('bc-caching');document.body.classList.add('bc-error');}
 progress(0);
 if(ac){ac.addEventListener('progress',function(e){if(e.total>0)progress(e.loaded/e.total*100);},false);ac.addEventListener('cached',finish,false);ac.addEventListener('updateready',finish,false);ac.addEventListener('noupdate',function(){done=true;document.body.classList.remove('bc-caching');},false);ac.addEventListener('error',error,false);if(ac.status===ac.IDLE||ac.status===ac.UNCACHED&&navigator.onLine===false){document.body.classList.remove('bc-caching');}}
-})();</script></body>
+})();</script>
+<div id="bc-exploit-ui" role="status" aria-live="polite"><div class="bc-exploit-title" id="bc-exploit-title">جاري تشغيل GoldHEN... يرجى الانتظار</div><div id="bc-exploit-track"><div id="bc-exploit-runner"></div></div></div>
+<script id="bc-exploit-activity">(function(){
+  var m=document.getElementById('msgs'), title=document.getElementById('bc-exploit-title');
+  var ps4=/PlayStation 4[ \/][0-9]/i.test(navigator.userAgent||'');
+  if(!ps4 || !window.applicationCache || window.applicationCache.status===window.applicationCache.UNCACHED)return;
+  var active=true;document.body.classList.add('bc-exploiting');
+  function inspect(){if(!active||!m)return;var t=(m.textContent||'').replace(/\s+/g,' ').trim();
+    if(/تم تحميل GoldHEN بنجاح|GoldHEN يعمل بالفعل|GoldHEN loaded successfully|GoldHEN already running/i.test(t)){active=false;document.body.classList.remove('bc-exploiting');document.body.classList.add('bc-status');return;}
+    if(/فشل|خطأ|غير مدعوم|لم يتم العثور|تعذّر|failed|error/i.test(t)){active=false;document.body.classList.remove('bc-exploiting');document.body.classList.add('bc-error');return;}
+    if(/GoldHEN|الاستغلال|جاري|تحميل|انتظار/i.test(t)){title.textContent=t.length<100?t:'جاري تشغيل GoldHEN... يرجى الانتظار';}
+  }
+  if(m){new MutationObserver(inspect).observe(m,{childList:true,characterData:true,subtree:true});inspect();}
+  window.addEventListener('error',function(e){if(e.target && e.target.tagName==='SCRIPT'){active=false;document.body.classList.remove('bc-exploiting');document.body.classList.add('bc-error');}},true);
+})();</script>
+</body>
 </html>
